@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 export default class input extends Component {
   state = {
     todo: '',
-    id: 0
+    id: 1
   }
   inputChange = (input) => {
     this.setState({
@@ -20,6 +20,8 @@ export default class input extends Component {
       todo: '',
       id: this.state.id + 1
     })
+    console.log(this.state.id)
+    this.props.onCreate(this.state.id);
   }
 
   render() {
