@@ -20,7 +20,6 @@ export default class input extends Component {
       todo: '',
       id: this.state.id + 1
     })
-    console.log(this.state.id)
     this.props.onCreate(this.state.id);
   }
 
