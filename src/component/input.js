@@ -30,7 +30,6 @@ export default class input extends Component {
       this.props.onCreate(this.state.id);
     }
     else {
-      console.log('값 null')
     }
   }
 
