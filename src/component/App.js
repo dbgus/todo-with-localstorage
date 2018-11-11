@@ -4,21 +4,32 @@ import List from './list'
 
 export default class App extends Component {
   state = {
-    number : 0
+    Index: 0,
+    updatae: false,
+
   }
 
-  localStorage = (number) => {
-    this.setState({
-      number: number
-    })
+  componentWillMount = () => {
+    if (this.state.updatae) {
+      console.log(2)
+    }
+    else {
+      const LocalIndex = localStorage.length;
+      this.setState({
+        Index: LocalIndex,
+        updatae: true
+      })
+      console.log(1)
+    }
   }
+
 
   render() {
     return (
-      <div>
-        <Input onCreate={this.localStorage} />
-        <List item ={this.state.number}/>
-      </div>
+      <div >
+        <Input onCreate={this.ChangelocalStorage} Index={this.state.Index} />
+        <List item={this.state.Index} />
+      </div >
     )
   }
 }
