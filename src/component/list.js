@@ -3,29 +3,31 @@ import Item from './listItem'
 
 export default class list extends Component {
   state = {
-    data: []
+    data: 0
   }
 
-  static getDerivedStateFromProps(nextProps, prevState) {
-    if (nextProps !== prevState) {
-      return { data: nextProps.item };
+  componentWillMount = () => {
+    const index = this.props.item;
+    let reserve = []
+    for(let i = 0; i<=index; i++){
+      reserve.push(i)
     }
+    this.setState({
+      data: reserve
+    })
   }
+
 
   onRemove = (data) => {
     console.log(data)
   };
 
   render() {
-    // const data = this.state.data;
-    // let list = []
-    // if (data !== undefined) {
-    //   list = data.map(index => (index === 0 ? '' : <Item key={index} contentId={index} />))
-    // }
-
+    const dataForMap = this.state.data
+    let list = dataForMap.map(index => (<Item key={index} contentId={index}/>))
     return (
       <div>
-        {/* {list} */}
+        {list}
       </div>
     )
   }
